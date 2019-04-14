@@ -1,2 +1,3 @@
 ---
 # defaults file for container-cadvisor
+VAR_CADVISOR_URL: cadvisor.example.com
