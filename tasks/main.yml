@@ -1,0 +1,5 @@
+---
+# tasks file for container-cadvisor
+- import_tasks: cadvisor.yml
+  become: true
+

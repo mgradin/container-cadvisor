@@ -1,0 +1,18 @@
+- name: Start cAdvisor container
+  docker_container:
+    name: cadvisor
+    image: google/cadvisor:latest
+    pull: yes
+    state: started
+    privileged: yes
+    labels:
+      traefik.backend=cadvisor
+      "traefik.frontend.rule=Host:{{ VAR_CADVISOR_URL }}"
+      traefik.port=8080
+      traefik.enable=true
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart_policy: unless-stopped
